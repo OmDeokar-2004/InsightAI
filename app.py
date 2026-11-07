@@ -54,7 +54,7 @@ API_KEY = (
     or os.getenv("GEMINI_API_KEY", "")
 ).strip()
 
-MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+MODEL = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
 
 client = None
 
