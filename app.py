@@ -3,6 +3,18 @@ from src.database import init_db, save_interaction, save_feedback, stats, feedba
 from src.ai import answer
 from src.sentiment import sentiment
 from src.analytics import dashboard
+import google.generativeai as genai
+
+import os
+
+GOOGLE_API_KEY = st.secrets.get(
+    "GOOGLE_API_KEY",
+    os.getenv("GOOGLE_API_KEY", "")
+)
+
+genai.configure(api_key=api_key)
+
+model=genai.GenerativeModel("gemini-2.5-flash")
 
 st.set_page_config(page_title='InsightAI', page_icon='🧠', layout='wide')
 init_db()
