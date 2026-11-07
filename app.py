@@ -12,7 +12,11 @@ GOOGLE_API_KEY = st.secrets.get(
     os.getenv("GOOGLE_API_KEY", "")
 )
 
-genai.configure(api_key=api_key)
+if not GOOGLE_API_KEY:
+    st.error("Gemini API key is missing. Check Streamlit Secrets.")
+    st.stop()
+
+genai.configure(api_key=GOOGLE_API_KEY)
 
 model=genai.GenerativeModel("gemini-2.5-flash")
 
